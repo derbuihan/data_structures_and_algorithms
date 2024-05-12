@@ -1,0 +1,2 @@
+
+add_executable(01_Declarations_of_Array 01_Declarations_of_Array/main.cpp)
