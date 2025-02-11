@@ -1,30 +1,27 @@
-
 #include <stdio.h>
-#include "CircularQueue.h"
+
+#include "Dequeue.h"
 
 int main() {
-    CircularQueue *cq = createCircularQueue(5);
+  Dequeue *dq = createDequeue();
 
-    for (int i = 1; i <= 5; i++) {
-        printf("Pushing %d: ", i * 10);
-        pushCircularQueue(cq, i * 10);
-        displayCircularQueue(cq);
-    }
+  for (int i = 1; i <= 3; i++) {
+    printf("Append %d: ", i * 10);
+    appendDequeue(dq, i * 10);
+    displayDequeue(dq);
 
-    if (isFullCircularQueue(cq)) {
-        printf("Circular Queue is full\n");
-    }
+    printf("Append Left %d: ", i * 100);
+    appendLeftDequeue(dq, i * 100);
+    displayDequeue(dq);
+  }
 
-    for (int i = 1; i <= 5; i++) {
-        printf("Popping ");
-        printf("%d: ", popCircularQueue(cq));
-        displayCircularQueue(cq);
-    }
+  for (int i = 1; i <= 3; i++) {
+    printf("Pop %d: ", popDequeue(dq));
+    displayDequeue(dq);
+    printf("Pop Left %d: ", popLeftDequeue(dq));
+    displayDequeue(dq);
+  }
 
-    if (isEmptyCircularQueue(cq)) {
-        printf("Circular Queue is empty\n");
-    }
-
-    freeCircularQueue(cq);
-    return 0;
+  freeDequeue(dq);
+  return 0;
 }
